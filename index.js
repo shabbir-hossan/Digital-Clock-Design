@@ -11,11 +11,23 @@ $(document).ready(function () {
     if (hours == 0) {
       hours = 12;
     }
-    else if(hours>= 12){
-        session = "PM"
+    if (hours >= 12) {
+      session = 'PM';
     }
-     else(hours > 12) {
-        hours
+    if (hours > 12) {
+      hours = hours - 12;
     }
+
+    hours = hours < 10 ? '0' + hours : hours;
+    minute = minute < 10 ? '0' + minute : minute;
+    sec = sec < 10 ? '0' + sec : sec;
+
+    $('#hours').text(hours);
+    $('#minute').text(minute);
+    $('#sec').text(sec);
+    $('#period').text(session);
+
+    setTimeout(showTime, 1000);
   }
+  showTime();
 });
